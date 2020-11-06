@@ -56,7 +56,8 @@
           },
         },
         dataLabels: {
-          enabled: false
+          enabled: false,
+
         },
         stroke: {
           curve: 'smooth'

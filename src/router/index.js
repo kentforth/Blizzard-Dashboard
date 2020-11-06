@@ -17,6 +17,12 @@ const routes = [
     component: () =>
       import("../views/overwatch")
   },
+  {
+    path: "/starcraft",
+    name: "starcraft",
+    component: () =>
+      import("../views/starcraft")
+  },
 ];
 
 const router = new VueRouter({

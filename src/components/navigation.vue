@@ -33,24 +33,24 @@
         grid-template-columns: 1fr;
         margin: 0 auto;
         justify-items: center;
-        width: 100%;
+        width: $nav-width;
         min-height: 100vh;
-        padding: 20% 0;
+        padding: 4em 0;
         background-color: $overwatch-dark;
+        position: fixed;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .link {
         width: 100%;
-        height: 150px;
+        height: 170px;
         text-align: center;
         display: flex;
         justify-content: center;
-        align-items: center;
-
     }
 
     .link:hover {
-        background-color: rgba(94,87,87,0.15);
+        background-color: rgba(94, 87, 87, 0.15);
 
     }
 
@@ -65,5 +65,7 @@
         height: 170px !important;
     }
 
-
+    .router-link-exact-active {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 </style>
