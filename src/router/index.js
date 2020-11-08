@@ -6,29 +6,24 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
-    redirect: '/overwatch',
-    component: () =>
-      import("../views/Home")
+    redirect: "/overwatch",
   },
   {
     path: "/overwatch",
     name: "overwatch",
-    component: () =>
-      import("../views/overwatch")
+    component: () => import("../views/overwatch"),
   },
   {
     path: "/starcraft",
     name: "starcraft",
-    component: () =>
-      import("../views/starcraft")
+    component: () => import("../views/starcraft"),
   },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;

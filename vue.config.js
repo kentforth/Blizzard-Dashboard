@@ -1,6 +1,6 @@
 module.exports = {
   devServer: {
-    port: 11050
+    port: 11000,
   },
   css: {
     loaderOptions: {
@@ -8,8 +8,8 @@ module.exports = {
         prependData: `
         @import "@/assets/scss/styles.scss";
         @import "~@/assets/scss/fonts.scss";
-        `
+        `,
       },
     },
-  }
+  },
 };

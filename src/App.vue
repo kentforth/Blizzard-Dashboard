@@ -4,21 +4,18 @@
       <navigation />
       <router-view />
     </div>
-
   </div>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
 <script>
-  import Navigation from "./components/navigation";
-  export default {
-    components: {Navigation}
-  }
+import Navigation from "./components/navigation";
+export default {
+  components: { Navigation },
+};
 </script>
 <style lang="scss">
-  .main {
-    display: flex;
-  }
+.main {
+  display: flex;
+}
 </style>
