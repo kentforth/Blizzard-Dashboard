@@ -108,7 +108,7 @@ export default {
   },
   methods: {
     addUser(user) {
-      if (this.usersSeries[0].data.length >= 30) {
+      if (this.usersSeries[0].data.length >= 20) {
         this.usersSeries[0].data.shift();
       } else {
         this.usersSeries[0].data.push(user);

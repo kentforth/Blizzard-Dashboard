@@ -15,7 +15,17 @@
             <users-area />
           </div>
         </div>
-        <div class="clans"></div>
+        <div class="clans__chart">
+          <div class="clans__text">
+            <h2>Clans</h2>
+            <img
+              src="../assets/images/icons/clans.svg"
+              alt="users"
+              class="svg-icon"
+            />
+          </div>
+          <clans />
+        </div>
       </section>
     </div>
   </div>
@@ -23,34 +33,52 @@
 
 <script>
 import UsersArea from "../components/overwatch/users-area";
+import Clans from "../components/overwatch/clans";
 
 export default {
   name: "overwatch",
-  components: { UsersArea },
+  components: { Clans, UsersArea },
 };
 </script>
 
 <style scoped lang="scss">
+.container {
+  width: 93%;
+}
+
 .overwatch {
   background: url("../assets/images/overwatch-background.jpg") center center;
   background-size: cover;
   min-height: 100vh;
   width: 100%;
-  padding: 0 0 0 $nav-width;
+  padding: 3% 0 0 $nav-width;
 }
 
 .all-users-chart {
   width: 100%;
 }
 
-.users__chart {
+.top-content {
+  display: grid;
+  grid-column-gap: 3%;
+
+  grid-template-columns: 1fr 1fr;
+}
+
+.users__chart,
+.clans__chart {
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
+  background-color: rgba(60, 55, 66, 0.5);
+  border-radius: 5px;
+  padding: 2%;
 }
 
-.users-text {
+.users-text,
+.clans__text {
   display: flex;
+  align-items: start;
   justify-content: space-between;
 }
 </style>
