@@ -2,7 +2,7 @@
   <div class="clans">
     <apexchart
       type="bar"
-      height="300"
+      height="270"
       :options="chartOptions"
       :series="series"
     ></apexchart>
@@ -19,7 +19,7 @@ const socket = io("http://localhost:11050/overwatch");
 Vue.use(VueSocketIOExt, socket);
 
 export default {
-  name: "clans",
+  name: "teams-winrate",
   components: {
     apexchart: VueApexCharts,
   },
@@ -33,21 +33,37 @@ export default {
     },
     series: [
       {
-        name: "Population",
-        data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2],
+        name: "Teamfight Win Rates",
+        data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8],
       },
     ],
     chartOptions: {
       chart: {
+        height: 350,
         type: "bar",
         foreColor: "#FFEDFF",
       },
       plotOptions: {
         bar: {
+          distributed: true,
           dataLabels: {
             position: "top", // top, center, bottom
           },
         },
+      },
+      fill: {
+        colors: [
+          "#F44A03",
+          "#006EC8",
+          "#22477B",
+          "#968630",
+          "#92D000",
+          "#F09829",
+          "#3C0F50",
+          "#00B7D3",
+          "#F7CA00",
+          "#EB222E",
+        ],
       },
       dataLabels: {
         enabled: true,
@@ -56,25 +72,21 @@ export default {
         },
         offsetY: -20,
         style: {
-          fontSize: "12px",
-          colors: ["#304758"],
+          fontSize: "14px",
         },
       },
-
       xaxis: {
         categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
+          "Shock",
+          "Fuel",
+          "Uprising",
+          "Dynasty",
+          "Outlaws",
+          "Fusion",
+          "Gladiators",
+          "Spitfire",
+          "Valiant",
+          "Dragons",
         ],
         position: "top",
         axisBorder: {
@@ -83,23 +95,11 @@ export default {
         axisTicks: {
           show: false,
         },
-        crosshairs: {
-          fill: {
-            type: "gradient",
-            gradient: {
-              colorFrom: "#FFEDFF",
-              colorTo: "#FFEDFF",
-              stops: [0, 100],
-              opacityFrom: 0.4,
-              opacityTo: 0.5,
-            },
-          },
-        },
         tooltip: {
           enabled: true,
-          theme: "dark",
         },
       },
+
       yaxis: {
         axisBorder: {
           show: false,
@@ -114,20 +114,24 @@ export default {
           },
         },
       },
-      title: {
-        text: "Monthly Inflation in Argentina, 2002",
-        floating: true,
-        offsetY: 330,
-        align: "center",
-        style: {
-          color: "#FFEDFF",
-        },
+      legend: {
+        show: false,
       },
       tooltip: {
         theme: "dark",
       },
     },
   }),
+  created() {
+    this.$socket.$subscribe("teamWinRate", (data) => {
+      this.series[0].data = data;
+      this.series = [
+        {
+          data: this.series[0].data,
+        },
+      ];
+    });
+  },
 };
 </script>
 

@@ -2,7 +2,7 @@
   <div class="users-area">
     <apexchart
       type="area"
-      height="250"
+      height="200"
       :options="usersChartOptions"
       :series="usersSeries"
       ref="usersChart"
@@ -106,6 +106,7 @@ export default {
       this.addUser(user);
     });
   },
+
   methods: {
     addUser(user) {
       if (this.usersSeries[0].data.length >= 20) {

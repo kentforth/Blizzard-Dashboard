@@ -17,14 +17,14 @@
         </div>
         <div class="clans__chart">
           <div class="clans__text">
-            <h2>Clans</h2>
+            <h2>Teams Winrate</h2>
             <img
               src="../assets/images/icons/clans.svg"
               alt="users"
               class="svg-icon"
             />
           </div>
-          <clans />
+          <teams-winrate />
         </div>
       </section>
     </div>
@@ -33,11 +33,11 @@
 
 <script>
 import UsersArea from "../components/overwatch/users-area";
-import Clans from "../components/overwatch/clans";
+import TeamsWinrate from "../components/overwatch/teams-winrate";
 
 export default {
   name: "overwatch",
-  components: { Clans, UsersArea },
+  components: { TeamsWinrate, UsersArea },
 };
 </script>
 
@@ -61,7 +61,6 @@ export default {
 .top-content {
   display: grid;
   grid-column-gap: 3%;
-
   grid-template-columns: 1fr 1fr;
 }
 
@@ -78,7 +77,7 @@ export default {
 .users-text,
 .clans__text {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
 }
 </style>

@@ -5,22 +5,34 @@ module.exports = function (io) {
 
   /*listen to events*/
   overwatch.on("connection", (socket) => {
-    let previosUsersNumber = 5000;
-
-    console.log("Overwatch is connected");
+    console.log(`Overwatch ${socket.id} is connected`);
 
     socket.on("disconnect", () => {
-      console.log("overwatch was disconnected");
+      console.log(`overwatch ${socket.id} was disconnected`);
       clearInterval(usersInterval);
+      clearInterval(teaWinRates);
     });
 
     socket.on("changeUsersNumber", (data) => {
       maxNumber = data;
     });
 
+    /*generate users number*/
     const usersInterval = setInterval(() => {
       socket.emit("newNumber", generateRandomNumber(5000, maxNumber));
     }, 2000);
+
+    /*generate team win rates*/
+    const teaWinRates = setInterval(() => {
+      socket.emit("teamWinRate", generateWinRate(20, 60));
+    }, 3000);
+
+    function generateWinRate(min, max) {
+      let randoms = Array.from({ length: 10 }, () =>
+        Math.floor(Math.random() * (max - min + 1) + min)
+      );
+      return randoms;
+    }
 
     function generateRandomNumber(min, max) {
       min = max - 300;
