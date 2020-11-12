@@ -11,6 +11,9 @@ module.exports = function (io) {
       console.log(`overwatch ${socket.id} was disconnected`);
       clearInterval(usersInterval);
       clearInterval(teaWinRates);
+      clearInterval(usersChoiceTanks);
+      clearInterval(usersChoiceDPS);
+      clearInterval(usersChoiceHealers);
     });
 
     socket.on("changeUsersNumber", (data) => {
@@ -24,11 +27,26 @@ module.exports = function (io) {
 
     /*generate team win rates*/
     const teaWinRates = setInterval(() => {
-      socket.emit("teamWinRate", generateWinRate(20, 60));
+      socket.emit("teamWinRate", generateNumberArray(20, 60, 10));
     }, 3000);
 
-    function generateWinRate(min, max) {
-      let randoms = Array.from({ length: 10 }, () =>
+    /*generate users choice tanks number*/
+    const usersChoiceTanks = setInterval(() => {
+      socket.emit("usersChoiceTanks", generateNumberArray(10, 80, 8));
+    }, 2500);
+
+    /*generate users choice dps number*/
+    const usersChoiceDPS = setInterval(() => {
+      socket.emit("usersChoiceDPS", generateNumberArray(7, 90, 17));
+    }, 3000);
+
+    /*generate users choice dps number*/
+    const usersChoiceHealers = setInterval(() => {
+      socket.emit("usersChoiceHealers", generateNumberArray(7, 90, 17));
+    }, 2200);
+
+    function generateNumberArray(min, max, arrayLength) {
+      let randoms = Array.from({ length: arrayLength }, () =>
         Math.floor(Math.random() * (max - min + 1) + min)
       );
       return randoms;

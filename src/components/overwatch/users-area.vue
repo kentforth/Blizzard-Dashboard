@@ -122,6 +122,7 @@ export default {
       ];
     },
     setValue() {
+      this.usersSeries[0].data = [];
       this.$socket.client.emit("changeUsersNumber", this.slider);
     },
   },

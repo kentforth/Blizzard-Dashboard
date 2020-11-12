@@ -61,3 +61,22 @@ span{
 .svg-icon {
   width: 4%;
 }
+
+
+.heroes-list > img {
+  width: 50px;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: $overwatch-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 15px;
+  border: 3px solid $primary;
+}

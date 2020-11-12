@@ -1,6 +1,7 @@
 <template>
   <div class="overwatch">
     <div class="container">
+      <!--TOP CHARTS-->
       <section class="top-content">
         <div class="users">
           <div class="users__chart">
@@ -27,6 +28,14 @@
           <teams-winrate />
         </div>
       </section>
+
+      <!--MIDDLE CHARTS-->
+      <section class="middle-content">
+        <users-choice />
+      </section>
+
+      <!--SPINNER-->
+      <spinner class="spinner" :color="spinnerColor" v-if="hasSpinner" />
     </div>
   </div>
 </template>
@@ -34,10 +43,25 @@
 <script>
 import UsersArea from "../components/overwatch/users-area";
 import TeamsWinrate from "../components/overwatch/teams-winrate";
+import UsersChoice from "../components/overwatch/users-choice";
+import Spinner from "../components/spinner";
 
 export default {
   name: "overwatch",
-  components: { TeamsWinrate, UsersArea },
+  components: { Spinner, UsersChoice, TeamsWinrate, UsersArea },
+  data: () => ({
+    spinnerColor: "#DAA011",
+    hasSpinner: true,
+    spinnerInterval: null,
+  }),
+  created() {
+    this.spinnerInterval = setInterval(() => {
+      this.hasSpinner = false;
+    }, 4500);
+  },
+  beforeDestroy() {
+    clearInterval(this.spinnerInterval);
+  },
 };
 </script>
 
@@ -79,5 +103,15 @@ export default {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+}
+
+.middle-content {
+  margin-top: 2%;
+}
+
+.spinner {
+  position: absolute;
+  top: 10%;
+  left: 35%;
 }
 </style>
