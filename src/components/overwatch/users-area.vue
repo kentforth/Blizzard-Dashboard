@@ -18,6 +18,8 @@
       :interval="1000"
       @drag-end="setValue"
     />
+    <!--SPINNER-->
+    <spinner class="spinner" :color="spinnerColor" v-if="hasSpinner" />
   </div>
 </template>
 
@@ -26,6 +28,8 @@ import VueApexCharts from "vue-apexcharts";
 import VueSocketIOExt from "vue-socket.io-extended";
 import Vue from "vue";
 import io from "socket.io-client";
+
+import Spinner from "../../components/spinner";
 
 const socket = io("http://localhost:11050/overwatch");
 Vue.use(VueSocketIOExt, socket);
@@ -36,11 +40,15 @@ import "vue-slider-component/theme/antd.css";
 export default {
   name: "users-area",
   components: {
+    Spinner,
     VueSlider,
     apexchart: VueApexCharts,
   },
   data: () => ({
     slider: "5000",
+    spinnerColor: "#DAA011",
+    hasSpinner: true,
+    spinnerInterval: null,
     socket: null,
     connection: null,
     sockets: {
@@ -105,8 +113,14 @@ export default {
     this.$socket.$subscribe("newNumber", (user) => {
       this.addUser(user);
     });
-  },
 
+    this.spinnerInterval = setInterval(() => {
+      this.hasSpinner = false;
+    }, 4500);
+  },
+  beforeDestroy() {
+    clearInterval(this.spinnerInterval);
+  },
   methods: {
     addUser(user) {
       if (this.usersSeries[0].data.length >= 20) {
@@ -122,6 +136,10 @@ export default {
       ];
     },
     setValue() {
+      this.hasSpinner = true;
+      this.spinnerInterval = setInterval(() => {
+        this.hasSpinner = false;
+      }, 5000);
       this.usersSeries[0].data = [];
       this.$socket.client.emit("changeUsersNumber", this.slider);
     },
@@ -130,6 +148,12 @@ export default {
 </script>
 
 <style lang="scss">
+.spinner {
+  position: absolute;
+  top: 10%;
+  left: 45%;
+}
+
 h3 {
   margin: 0 0 10px 0;
 }

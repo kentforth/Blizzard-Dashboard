@@ -1,15 +1,15 @@
 <template>
   <div class="spinner">
-    <atom-spinner :animation-duration="1000" :size="60" :color="color" />
+    <orbit-spinner :animation-duration="1000" :size="60" :color="color" />
   </div>
 </template>
 
 <script>
-import { AtomSpinner } from "epic-spinners";
+import { OrbitSpinner } from "epic-spinners";
 export default {
   name: "spinner",
   components: {
-    AtomSpinner,
+    OrbitSpinner,
   },
   props: {
     color: {

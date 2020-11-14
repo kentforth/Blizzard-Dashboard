@@ -19,7 +19,6 @@
         <div class="chart">
           <apexchart
             type="polarArea"
-            width="380"
             :options="tanksOptions"
             :series="tanksSeries"
           ></apexchart>
@@ -70,7 +69,6 @@
         <div class="chart">
           <apexchart
             type="polarArea"
-            width="380"
             :options="dpsOptions"
             :series="dpsSeries"
           ></apexchart>
@@ -153,7 +151,6 @@
         <div class="chart">
           <apexchart
             type="polarArea"
-            width="380"
             :options="healersOptions"
             :series="healersSeries"
           ></apexchart>
@@ -451,6 +448,7 @@ h3 {
 }
 .hero-types {
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr 0.5fr 1fr 0.5fr 1fr;
   justify-content: center;
   justify-items: center;
@@ -481,6 +479,10 @@ h3 {
 .healers {
   width: 100%;
   height: 100%;
+}
+
+.tanks-chart {
+  width: 100%;
 }
 
 .heroes__text {

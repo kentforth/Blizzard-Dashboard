@@ -33,9 +33,6 @@
       <section class="middle-content">
         <users-choice />
       </section>
-
-      <!--SPINNER-->
-      <spinner class="spinner" :color="spinnerColor" v-if="hasSpinner" />
     </div>
   </div>
 </template>
@@ -44,28 +41,16 @@
 import UsersArea from "../components/overwatch/users-area";
 import TeamsWinrate from "../components/overwatch/teams-winrate";
 import UsersChoice from "../components/overwatch/users-choice";
-import Spinner from "../components/spinner";
 
 export default {
   name: "overwatch",
-  components: { Spinner, UsersChoice, TeamsWinrate, UsersArea },
-  data: () => ({
-    spinnerColor: "#DAA011",
-    hasSpinner: true,
-    spinnerInterval: null,
-  }),
-  created() {
-    this.spinnerInterval = setInterval(() => {
-      this.hasSpinner = false;
-    }, 4500);
-  },
-  beforeDestroy() {
-    clearInterval(this.spinnerInterval);
-  },
+  components: { UsersChoice, TeamsWinrate, UsersArea },
+  data: () => ({}),
 };
 </script>
 
 <style scoped lang="scss">
+@import "../assets/scss/components/overwatch";
 .container {
   width: 93%;
 }
@@ -107,11 +92,6 @@ export default {
 
 .middle-content {
   margin-top: 2%;
-}
-
-.spinner {
-  position: absolute;
-  top: 10%;
-  left: 35%;
+  margin-bottom: 3%;
 }
 </style>
