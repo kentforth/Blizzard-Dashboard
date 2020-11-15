@@ -42,6 +42,15 @@ export default {
   background-color: $overwatch-dark;
   position: fixed;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 999;
+
+  @include responsive(phone) {
+    display: flex;
+    width: 100%;
+    min-height: 70px;
+    background-color: black;
+    padding: 0;
+  }
 }
 
 .link {
@@ -50,6 +59,10 @@ export default {
   text-align: center;
   display: flex;
   justify-content: center;
+
+  @include responsive(phone) {
+    height: 70px;
+  }
 }
 
 .link:hover {
@@ -64,6 +77,10 @@ export default {
 
 .img-diablo {
   height: 170px !important;
+
+  @include responsive(phone) {
+    height: 100% !important;
+  }
 }
 
 .router-link-exact-active {

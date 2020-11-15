@@ -7,7 +7,20 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 100%;
+
+  @include responsive(tab-land) {
+    font-size: 80%;
+  }
+  @include responsive(tab-port) {
+    font-size: 75%;
+  }
+  @include responsive(phone) {
+    font-size: 65%;
+  }
+  @include responsive(phone-small) {
+    font-size: 60%;
+  }
 }
 
 body {
@@ -28,12 +41,18 @@ h2 {
   font-size: $font-size * 1.5;
   font-weight: 600;
   margin: 0.5em 0;
+
+  @include responsive(phone) {
+    font-size: $font-size* 2;
+  }
 }
 
 h3 {
   font-weight: 500;
   font-size: $font-size* 1.2;
   color: $white;
+
+
 }
 
 ul {
@@ -60,6 +79,13 @@ span{
 
 .svg-icon {
   width: 4%;
+  @include responsive(tab-port) {
+    width: 5%;
+  }
+
+  @include responsive(phone) {
+    width: 10%;
+  }
 }
 
 

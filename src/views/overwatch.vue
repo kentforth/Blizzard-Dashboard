@@ -50,7 +50,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/scss/components/overwatch";
 .container {
   width: 93%;
 }
@@ -61,6 +60,11 @@ export default {
   min-height: 100vh;
   width: 100%;
   padding: 3% 0 0 $nav-width;
+
+  @include responsive(phone) {
+    padding: 3% 0 0 0;
+    margin-top: 20%;
+  }
 }
 
 .all-users-chart {
@@ -71,6 +75,11 @@ export default {
   display: grid;
   grid-column-gap: 3%;
   grid-template-columns: 1fr 1fr;
+
+  @include responsive(tab-port) {
+    grid-template-columns: 1fr;
+    grid-gap: 3%;
+  }
 }
 
 .users__chart,
@@ -81,6 +90,10 @@ export default {
   background-color: rgba(60, 55, 66, 0.5);
   border-radius: 5px;
   padding: 2%;
+
+  @include responsive(phone) {
+    padding: 5%;
+  }
 }
 
 .users-text,
@@ -90,8 +103,15 @@ export default {
   justify-content: space-between;
 }
 
+.users-text img {
+}
+
 .middle-content {
   margin-top: 2%;
   margin-bottom: 3%;
+
+  @include responsive(tab-port) {
+    margin-top: 7%;
+  }
 }
 </style>

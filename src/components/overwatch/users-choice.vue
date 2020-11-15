@@ -432,11 +432,15 @@ export default {
 };
 </script>
 
-<style scoped style="">
+<style scoped lang="scss">
 .users-choice {
   background-color: rgba(60, 55, 66, 0.5);
   border-radius: 5px;
   padding: 1.5%;
+
+  @include responsive(phone) {
+    padding: 5%;
+  }
 }
 
 h2 {
@@ -445,6 +449,9 @@ h2 {
 
 h3 {
   display: inline-block;
+  @include responsive(tab-port) {
+    font-size: $font-size * 2;
+  }
 }
 .hero-types {
   display: grid;
@@ -453,6 +460,14 @@ h3 {
   justify-content: center;
   justify-items: center;
   align-items: center;
+
+  @include responsive(tab-port) {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+
+  @include responsive(phone) {
+  }
 }
 
 .choice__text {
@@ -465,6 +480,14 @@ h3 {
   margin-left: auto;
   display: inline-block;
   width: 2.5%;
+
+  @include responsive(tab-port) {
+    width: 5%;
+  }
+
+  @include responsive(phone) {
+    width: 7%;
+  }
 }
 
 .choice__text > h2 {
@@ -511,11 +534,22 @@ h3 {
   width: 100px;
   margin: 0 20px 10px 0;
   object-fit: contain;
+
+  @include responsive(tab-port) {
+    height: 70px;
+    width: 70px;
+  }
 }
 
 .line {
   width: 1px;
   height: 90%;
   background-color: rgba(255, 255, 255, 0.1);
+
+  @include responsive(tab-port) {
+    height: 1px;
+    width: 100%;
+    margin: 20px 0;
+  }
 }
 </style>
