@@ -1,5 +1,5 @@
 <template>
-  <div class="users-area">
+  <div class="starcraft-users-area">
     <apexchart
       type="area"
       height="200"
@@ -8,36 +8,20 @@
       ref="usersChart"
       class="all-users-chart"
     ></apexchart>
-    <h3>Change users number</h3>
-    <span>Max: {{ slider }}</span>
-    <vue-slider
-      class="my-slider"
-      v-model="slider"
-      :min="5000"
-      :max="50000"
-      :interval="1000"
-      @drag-end="setValue"
-    />
+
     <!--SPINNER-->
     <spinner class="spinner" :color="spinnerColor" v-if="hasSpinner" />
   </div>
 </template>
 
 <script>
-import Spinner from "../../components/spinner";
-
-import VueSlider from "vue-slider-component";
-import "vue-slider-component/theme/antd.css";
+import Spinner from "../spinner";
 
 export default {
-  name: "users-area",
-  components: {
-    Spinner,
-    VueSlider,
-  },
+  name: "starcraft-users-area",
+  components: { Spinner },
   data: () => ({
-    slider: "5000",
-    spinnerColor: "#DAA011",
+    spinnerColor: "#f4e2e2",
     hasSpinner: true,
     spinnerInterval: null,
     socket: null,
@@ -66,7 +50,7 @@ export default {
           },
         },
       },
-      colors: ["#DAA011"],
+      colors: ["#9C8611"],
       dataLabels: {
         enabled: false,
       },
@@ -96,7 +80,7 @@ export default {
     },
   }),
   created() {
-    this.$socket.client.on("newNumber", (user) => {
+    this.$socket.client.on("generateUsers", (user) => {
       this.addUser(user);
     });
 
@@ -106,7 +90,7 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this.spinnerInterval);
-    this.$socket.client.off("newNumber");
+    this.$socket.client.off("generateUsers");
   },
   methods: {
     addUser(user) {
@@ -122,19 +106,11 @@ export default {
         },
       ];
     },
-    setValue() {
-      this.hasSpinner = true;
-      this.spinnerInterval = setInterval(() => {
-        this.hasSpinner = false;
-      }, 5000);
-      this.usersSeries[0].data = [];
-      this.$socket.client.emit("changeUsersNumber", this.slider);
-    },
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .spinner {
   position: absolute;
   top: 10%;
@@ -143,14 +119,5 @@ export default {
 
 h3 {
   margin: 0 0 10px 0;
-}
-
-.vue-slider-process,
-.vue-slider-dot-handle {
-  background-color: $overwatch-accent !important;
-}
-
-.vue-slider-dot-handle {
-  border: 2px solid $overwatch-accent !important;
 }
 </style>

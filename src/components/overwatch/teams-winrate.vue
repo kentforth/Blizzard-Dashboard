@@ -10,27 +10,10 @@
 </template>
 
 <script>
-import VueApexCharts from "vue-apexcharts";
-import VueSocketIOExt from "vue-socket.io-extended";
-import Vue from "vue";
-import io from "socket.io-client";
-
-const socket = io("http://localhost:11050/overwatch");
-Vue.use(VueSocketIOExt, socket);
-
 export default {
   name: "teams-winrate",
-  components: {
-    apexchart: VueApexCharts,
-  },
   data: () => ({
     socket: null,
-    connection: null,
-    sockets: {
-      connect() {
-        console.log("socket connected");
-      },
-    },
     series: [
       {
         name: "Teamfight Win Rates",
@@ -123,7 +106,7 @@ export default {
     },
   }),
   created() {
-    this.$socket.$subscribe("teamWinRate", (data) => {
+    this.$socket.client.on("teamWinRate", (data) => {
       this.series[0].data = data;
       this.series = [
         {
@@ -131,6 +114,9 @@ export default {
         },
       ];
     });
+  },
+  beforeDestroy() {
+    this.$socket.client.off("teamWinRate");
   },
 };
 </script>

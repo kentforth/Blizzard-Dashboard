@@ -191,19 +191,8 @@
 </template>
 
 <script>
-import VueApexCharts from "vue-apexcharts";
-import VueSocketIOExt from "vue-socket.io-extended";
-import Vue from "vue";
-import io from "socket.io-client";
-
-const socket = io("http://localhost:11050/overwatch");
-Vue.use(VueSocketIOExt, socket);
-
 export default {
   name: "users-choice",
-  components: {
-    apexchart: VueApexCharts,
-  },
   data: () => ({
     socket: null,
     connection: null,
@@ -417,17 +406,22 @@ export default {
     },
   }),
   created() {
-    this.$socket.$subscribe("usersChoiceTanks", (data) => {
+    this.$socket.client.on("usersChoiceTanks", (data) => {
       this.tanksSeries = data;
     });
 
-    this.$socket.$subscribe("usersChoiceDPS", (data) => {
+    this.$socket.client.on("usersChoiceDPS", (data) => {
       this.dpsSeries = data;
     });
 
-    this.$socket.$subscribe("usersChoiceHealers", (data) => {
+    this.$socket.client.on("usersChoiceHealers", (data) => {
       this.healersSeries = data;
     });
+  },
+  beforeDestroy() {
+    this.$socket.client.off("usersChoiceTanks");
+    this.$socket.client.off("usersChoiceDPS");
+    this.$socket.client.off("usersChoiceHealers");
   },
 };
 </script>

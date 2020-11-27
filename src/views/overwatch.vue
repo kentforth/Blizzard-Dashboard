@@ -103,9 +103,6 @@ export default {
   justify-content: space-between;
 }
 
-.users-text img {
-}
-
 .middle-content {
   margin-top: 2%;
   margin-bottom: 3%;
