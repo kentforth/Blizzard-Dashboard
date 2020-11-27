@@ -102,12 +102,17 @@ export default {
     },
   }),
   created() {
-    /*this.$socket.client.on("clanMembers", (data) => {
-      console.log(data);
-    });*/
+    this.$socket.client.on("clanMembers", (data) => {
+      this.series[0].data = data;
+      this.series = [
+        {
+          data: this.series[0].data,
+        },
+      ];
+    });
   },
   beforeDestroy() {
-    this.$socket.client.off("armyUnits");
+    this.$socket.client.off("clanMembers");
   },
 };
 </script>

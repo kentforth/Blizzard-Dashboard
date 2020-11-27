@@ -2,7 +2,7 @@ const express = require("express");
 
 let maxNumber = 40000;
 
-const randomUsers = require("../functions");
+const starcraftFunctions = require("../functions");
 
 let armyUnits = [400, 700, 500];
 
@@ -26,7 +26,7 @@ module.exports = function (io) {
     const usersInterval = setInterval(() => {
       socket.emit(
         "generateUsers",
-        randomUsers.generateRandomUsers(5000, maxNumber)
+        starcraftFunctions.generateRandomUsers(5000, maxNumber)
       );
     }, 2300);
 
@@ -35,8 +35,10 @@ module.exports = function (io) {
 
     /*generate clan members number*/
     const clanMembersInterval = setInterval(() => {
-      const clanMembers = [21, 32, 56];
-      socket.emit("clanMembers", clanMembers);
+      socket.emit(
+        "clanMembers",
+        starcraftFunctions.generateArrayWithSpecificNumbers()
+      );
     }, 2750);
 
     socket.on("changeArmyUnits", (units) => {
