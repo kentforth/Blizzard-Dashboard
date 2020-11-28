@@ -159,6 +159,7 @@ export default {
   width: 100%;
   min-height: 100vh;
   padding: 3% 0 0 $nav-width;
+  overflow: hidden;
 
   @include responsive(phone) {
     padding: 3% 0 0 0;
@@ -170,6 +171,7 @@ export default {
   padding: 2%;
   background-color: $starcraft-background-blocks;
   margin-top: 2%;
+  width: 100%;
 }
 
 .calculate {
@@ -180,6 +182,10 @@ export default {
     justify-content: center;
     justify-items: center;
     margin-top: 2em;
+
+    @include responsive(tab-port) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
@@ -190,11 +196,27 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
 
+  @include responsive(tab-port) {
+    grid-template-columns: 1fr;
+  }
+
   h2 {
     font-size: $font-size * 1.5;
     color: $starcraft-gold;
     font-family: "Modern Warfare Regular", sans-serif;
     text-transform: uppercase;
+  }
+}
+
+.race-inputs {
+  @include responsive(tab-port) {
+    margin-top: 1em;
+  }
+}
+
+.input {
+  @include responsive(tab-port) {
+    margin-bottom: 2em;
   }
 }
 
@@ -218,6 +240,10 @@ export default {
   width: 100%;
   margin: 3em auto 0 auto;
   text-align: center;
+
+  @include responsive(tab-port) {
+    margin-top: 1em;
+  }
 }
 
 .btn-calc {
@@ -258,6 +284,14 @@ export default {
 .units-pie {
   width: 50%;
   margin: 2em auto 0 auto;
+
+  @include responsive(tab-port) {
+    width: 70%;
+  }
+
+  @include responsive(phone) {
+    width: 100%;
+  }
 }
 
 .clan-members {

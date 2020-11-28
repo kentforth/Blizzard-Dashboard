@@ -80,7 +80,7 @@ span{
 .svg-icon {
   width: 4%;
   @include responsive(tab-port) {
-    width: 5%;
+    width: 5% !important;
   }
 
   @include responsive(phone) {

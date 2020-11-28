@@ -4,7 +4,7 @@
       <h2>{{ text }}</h2>
     </div>
     <div class="content__img">
-      <img :src="image" />
+      <img :src="image" class="units-image" />
     </div>
   </div>
 </template>
@@ -31,6 +31,7 @@ export default {
   align-items: center;
   align-content: center;
   width: 100%;
+  padding: 0 1.5% 0 2%;
 }
 .content__text {
   justify-self: center;
@@ -40,5 +41,12 @@ export default {
 .content__img {
   justify-self: end;
   grid-column: 4/4;
+}
+
+.units-image {
+  width: 100%;
+  @include responsive(phone) {
+    width: 70%;
+  }
 }
 </style>

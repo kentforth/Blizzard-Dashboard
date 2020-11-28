@@ -51,10 +51,18 @@ export default {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200,
+              width: 350,
             },
             legend: {
               position: "bottom",
+            },
+          },
+        },
+        {
+          breakpoint: 320,
+          options: {
+            chart: {
+              width: 200,
             },
           },
         },
