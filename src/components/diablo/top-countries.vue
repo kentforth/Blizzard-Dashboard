@@ -27,6 +27,14 @@ export default {
       stroke: {
         colors: ["#f4e2e2"],
       },
+      yaxis: {
+        show: false,
+        labels: {
+          formatter: function (val) {
+            return val + "%";
+          },
+        },
+      },
       fill: {
         opacity: 0.8,
       },
