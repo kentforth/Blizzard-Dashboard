@@ -85,12 +85,7 @@ import UnitsPie from "../components/starcraft/units-pie";
 
 Vue.use(Toast);
 
-import VueSocketIOExt from "vue-socket.io-extended";
-import io from "socket.io-client";
 import ClanMembers from "../components/starcraft/clan-members";
-
-const socket = io("http://localhost:11050");
-Vue.use(VueSocketIOExt, socket);
 
 export default {
   name: "starcraft",

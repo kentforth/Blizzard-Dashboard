@@ -196,11 +196,6 @@ export default {
   data: () => ({
     socket: null,
     connection: null,
-    sockets: {
-      connect() {
-        console.log("socket connected");
-      },
-    },
     tanksSeries: [42, 47, 52, 58, 65, 45, 12, 54],
     tanksOptions: {
       chart: {

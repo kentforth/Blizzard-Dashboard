@@ -18,6 +18,11 @@ const routes = [
     name: "starcraft",
     component: () => import("../views/starcraft"),
   },
+  {
+    path: "/diablo",
+    name: "diablo",
+    component: () => import("../views/diablo"),
+  },
 ];
 
 const router = new VueRouter({
