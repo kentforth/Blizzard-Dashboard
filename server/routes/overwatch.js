@@ -21,9 +21,9 @@ module.exports = function (io) {
       clearInterval(usersChoiceHealers);
     });
 
-    socket.on("disconnect", () => {
+    /*socket.on("disconnect", () => {
       console.log("overwatch was disconnected");
-    });
+    });*/
 
     socket.on("changeUsersNumber", (data) => {
       maxNumber = data;

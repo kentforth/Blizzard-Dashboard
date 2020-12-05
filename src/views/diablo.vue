@@ -1,13 +1,29 @@
 <template>
   <div class="diablo">
     <div class="top-content">
-      <div class="top-countries">
-        <div class="top-countries__header">
+      <!--TOp COUNTRIES-->
+      <div class="top-chart-items">
+        <div class="top-chart-items__header">
           <h2>Top Countries Playing Diablo 3</h2>
           <img src="../assets/images/icons/flag.svg" alt="" class="svg-icon" />
         </div>
         <div class="countries-chart">
           <top-countries />
+        </div>
+      </div>
+
+      <!--TOP DAMAGE Characters-->
+      <div class="top-chart-items">
+        <div class="top-chart-items__header">
+          <h2>Top Damage Players</h2>
+          <img
+            src="../assets/images/overwatch/damage.svg"
+            alt=""
+            class="svg-icon"
+          />
+        </div>
+        <div class="countries-chart">
+          <top-damage />
         </div>
       </div>
     </div>
@@ -16,9 +32,10 @@
 
 <script>
 import TopCountries from "../components/diablo/top-countries";
+import TopDamage from "../components/diablo/top-damage";
 export default {
   name: "diablo",
-  components: { TopCountries },
+  components: { TopDamage, TopCountries },
 };
 </script>
 
@@ -36,7 +53,14 @@ export default {
   }
 }
 
-.top-countries {
+.top-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  grid-column-gap: 2em;
+}
+
+.top-chart-items {
   background: rgba(201, 98, 16, 0.3);
   border-radius: 5px;
   padding: 1%;
@@ -51,7 +75,7 @@ export default {
 }
 
 .svg-icon {
-  width: 2%;
+  width: 3%;
 }
 
 .countries-chart {

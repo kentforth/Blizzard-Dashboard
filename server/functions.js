@@ -22,23 +22,28 @@ exports.generateArmyUnits = function (armyOne, armyTwo, armyThree) {
   return armyArray;
 };
 
-function generateRandomNumber(min, max) {
+exports.generateRandomNumber = function (min, max) {
   const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
   return randomNumber;
-}
+};
+
+exports.generateRandomFloatNumber = function (min, max) {
+  let randomNumber = Math.random() * (max - min) + min;
+  return randomNumber;
+};
 
 exports.generateArrayWithSpecificNumbers = function () {
   let myArray = [];
-  let randomNumber1 = generateRandomNumber(90, 100);
-  let randomNumber2 = generateRandomNumber(180, 200);
-  let randomNumber3 = generateRandomNumber(432, 440);
-  let randomNumber4 = generateRandomNumber(1130, 1138);
-  let randomNumber5 = generateRandomNumber(568, 574);
-  let randomNumber6 = generateRandomNumber(256, 270);
-  let randomNumber7 = generateRandomNumber(423, 428);
-  let randomNumber8 = generateRandomNumber(60, 67);
-  let randomNumber9 = generateRandomNumber(823, 828);
-  let randomNumber10 = generateRandomNumber(1110, 1118);
+  let randomNumber1 = this.generateRandomNumber(90, 100);
+  let randomNumber2 = this.generateRandomNumber(180, 200);
+  let randomNumber3 = this.generateRandomNumber(432, 440);
+  let randomNumber4 = this.generateRandomNumber(1130, 1138);
+  let randomNumber5 = this.generateRandomNumber(568, 574);
+  let randomNumber6 = this.generateRandomNumber(256, 270);
+  let randomNumber7 = this.generateRandomNumber(423, 428);
+  let randomNumber8 = this.generateRandomNumber(60, 67);
+  let randomNumber9 = this.generateRandomNumber(823, 828);
+  let randomNumber10 = this.generateRandomNumber(1110, 1118);
   myArray = [
     randomNumber1,
     randomNumber2,
@@ -52,4 +57,20 @@ exports.generateArrayWithSpecificNumbers = function () {
     randomNumber10,
   ];
   return myArray;
+};
+
+exports.generateFloatNumbersArray = function (numberArray, fractionDigit) {
+  let newArray = [];
+  let number = null;
+
+  for (let numberObject of numberArray) {
+    number = parseFloat(
+      this.generateRandomFloatNumber(
+        numberObject.min,
+        numberObject.max
+      ).toFixed(fractionDigit)
+    );
+    newArray.push(number);
+  }
+  return newArray;
 };

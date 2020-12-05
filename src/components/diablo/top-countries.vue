@@ -61,6 +61,14 @@ export default {
       ],
     },
   }),
+  created() {
+    this.$socket.client.on("topCountriesDiablo", (data) => {
+      this.series = data;
+    });
+  },
+  beforeDestroy() {
+    this.$socket.client.off("topCountriesDiablo");
+  },
 };
 </script>
 

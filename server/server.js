@@ -8,3 +8,4 @@ const io = require("socket.io")(server);
 
 app.use(require("./routes/overwatch")(io));
 app.use(require("./routes/starcraft")(io));
+app.use(require("./routes/diablo")(io));

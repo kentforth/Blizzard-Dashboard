@@ -14,10 +14,7 @@ module.exports = function (io) {
 
   /*listen to events*/
   starcraftIO.on("connection", (socket) => {
-    console.log(`Starcraft ${socket.id} is connected`);
-
     socket.on("disconnect", () => {
-      console.log(`Starcraft ${socket.id} was disconnected`);
       clearInterval(usersInterval);
       clearInterval(clanMembersInterval);
     });
