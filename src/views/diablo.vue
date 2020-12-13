@@ -238,6 +238,10 @@ export default {
         {
           breakpoint: 480,
           options: {
+            chart: {
+              width: "100%",
+              maxHeight: "600px",
+            },
             legend: {
               show: false,
             },
@@ -529,7 +533,7 @@ export default {
   padding: 3% 2% 0 $nav-width + 2.2%;
 
   @include responsive(phone) {
-    padding: 3% 0 0 0;
+    padding: 3% 3% 0 3%;
     margin-top: 20%;
   }
 }
@@ -538,6 +542,14 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 2em;
+
+  @include responsive(tab-port) {
+    grid-template-columns: 1fr;
+  }
+
+  @include responsive(phone) {
+    grid-gap: 1em;
+  }
 }
 
 .top-chart-items,
@@ -553,6 +565,10 @@ export default {
   &__header {
     display: flex;
     justify-content: space-between;
+  }
+
+  @include responsive(phone) {
+    padding: 10px;
   }
 }
 

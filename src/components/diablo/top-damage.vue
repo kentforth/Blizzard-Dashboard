@@ -2,7 +2,7 @@
   <apexchart
     type="bar"
     height="250"
-    width="700"
+    class="chart"
     :options="chartOptions"
     :series="series"
   ></apexchart>
@@ -33,7 +33,7 @@ export default {
     ],
     chartOptions: {
       chart: {
-        height: 350,
+        width: 700,
         type: "bar",
         foreColor: "#f4e2e2",
       },
@@ -50,7 +50,6 @@ export default {
         width: 0,
         borderColor: "#63FCC4",
       },
-
       grid: {
         row: {
           colors: ["#949494", "#717171"],
@@ -116,4 +115,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.chart {
+  width: 100%;
+}
+</style>

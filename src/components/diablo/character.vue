@@ -178,15 +178,30 @@ h3 {
   margin: 0.5em 0;
   text-shadow: 2px 1px 4px #0f0500;
   font-size: 2rem;
+
+  @include responsive(phone) {
+    font-size: 3rem;
+  }
 }
 
 .stats-items {
   display: grid;
-  grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 1fr 0.5fr 1fr;
   justify-items: center;
+  grid-gap: 5%;
   font-size: 1.3rem;
   color: $white;
   align-items: center;
+
+  @include responsive(tab-port) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include responsive(phone) {
+    grid-template-columns: 1fr;
+    grid-gap: 3%;
+    margin-bottom: 6em;
+  }
 }
 
 .stats {
@@ -208,6 +223,10 @@ p {
   font-family: "Arial", sans-serif;
   font-weight: 400;
   color: $diablo-secondary;
+
+  @include responsive(phone) {
+    font-size: 1.7rem;
+  }
 }
 
 span {

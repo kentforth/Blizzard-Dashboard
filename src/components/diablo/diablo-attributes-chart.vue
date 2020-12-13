@@ -2,6 +2,7 @@
   <apexchart
     type="radialBar"
     height="300"
+    class="attributes-chart"
     :options="options"
     :series="series"
   ></apexchart>
@@ -28,4 +29,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.attributes-chart {
+  width: 100%;
+
+  @include responsive(phone) {
+  }
+}
+</style>
