@@ -1,8 +1,8 @@
 const express = require("express");
 
-let maxNumber = 10000;
-
 const functions = require("../functions");
+
+const barbarianStats = [100, 200, 300, 400];
 
 module.exports = function (io) {
   const diabloIO = io;
@@ -22,7 +22,6 @@ module.exports = function (io) {
         { min: 19, max: 20.8 },
         { min: 9.4, max: 10.1 },
         { min: 8.2, max: 8.7 },
-        { min: 2.362, max: 2.372 },
         { min: 6.3, max: 6.9 },
         { min: 5.1, max: 5.8 },
       ];
@@ -54,6 +53,10 @@ module.exports = function (io) {
       let newDamageArray = functions.generateFloatNumbersArray(damageArray, 3);
       socket.emit("topDamagePlayersDiablo", newDamageArray);
     }, 3200);
+
+    socket.on("changeCharacterChart", (data) => {
+      socket.emit("diabloCharacterStats", data);
+    });
   });
   return router;
 };
