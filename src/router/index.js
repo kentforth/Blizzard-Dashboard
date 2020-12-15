@@ -23,6 +23,11 @@ const routes = [
     name: "diablo",
     component: () => import("../views/diablo"),
   },
+  {
+    path: "/heartstone",
+    name: "heartstone",
+    component: () => import("../views/heartstone"),
+  },
 ];
 
 const router = new VueRouter({

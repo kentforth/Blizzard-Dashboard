@@ -2,8 +2,6 @@ const express = require("express");
 
 const functions = require("../functions");
 
-const barbarianStats = [100, 200, 300, 400];
-
 module.exports = function (io) {
   const diabloIO = io;
   let router = express.Router();
@@ -12,7 +10,6 @@ module.exports = function (io) {
 
   diabloIO.on("connection", (socket) => {
     socket.on("disconnect", () => {
-      console.log(`Diablo ${socket.id} was disconnected`);
       clearInterval(topCountriesInterval);
       clearInterval(topDamagePlayers);
     });
