@@ -37,7 +37,7 @@ h2 {
   margin: 0;
   position: absolute;
   top: 145px;
-  right: 5%;
+  right: 15%;
   color: #6b430c;
   font-weight: 700;
   z-index: 999;

@@ -1,3 +1,4 @@
+//generate users for users chart
 exports.generateRandomUsers = function (min, max) {
   min = max - 300;
   let number = Math.floor(Math.random() * (max - min + 1) + min);
@@ -10,6 +11,7 @@ exports.generateRandomUsers = function (min, max) {
   return item;
 };
 
+//generate array with custom length and num,bers from min to max
 exports.generateRandomArray = function (min, max, arrayLength) {
   let randoms = Array.from({ length: arrayLength }, () =>
     Math.floor(Math.random() * (max - min + 1) + min)
@@ -17,21 +19,25 @@ exports.generateRandomArray = function (min, max, arrayLength) {
   return randoms;
 };
 
+//generate array with 3 numbers
 exports.generateArmyUnits = function (armyOne, armyTwo, armyThree) {
   let armyArray = [armyOne, armyTwo, armyThree];
   return armyArray;
 };
 
+//generate random number
 exports.generateRandomNumber = function (min, max) {
   const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
   return randomNumber;
 };
 
+//generate random float number
 exports.generateRandomFloatNumber = function (min, max) {
   let randomNumber = Math.random() * (max - min) + min;
   return randomNumber;
 };
 
+//generate array with specific numbers
 exports.generateArrayWithSpecificNumbers = function () {
   let myArray = [];
   let randomNumber1 = this.generateRandomNumber(90, 100);
@@ -59,6 +65,7 @@ exports.generateArrayWithSpecificNumbers = function () {
   return myArray;
 };
 
+//generate array with float numbers
 exports.generateFloatNumbersArray = function (numberArray, fractionDigit) {
   let newArray = [];
   let number = null;
@@ -69,6 +76,22 @@ exports.generateFloatNumbersArray = function (numberArray, fractionDigit) {
         numberObject.min,
         numberObject.max
       ).toFixed(fractionDigit)
+    );
+    newArray.push(number);
+  }
+  return newArray;
+};
+
+//generate array with numbers
+exports.generateNumbersArray = function (numberArray, fractionDigit) {
+  let newArray = [];
+  let number = null;
+
+  for (let numberObject of numberArray) {
+    number = parseFloat(
+      this.generateRandomNumber(numberObject.min, numberObject.max).toFixed(
+        fractionDigit
+      )
     );
     newArray.push(number);
   }

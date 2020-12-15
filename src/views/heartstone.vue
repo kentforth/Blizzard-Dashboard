@@ -5,6 +5,10 @@
         <h2>Cards Type</h2>
         <heartstone-cards-type />
       </div>
+      <div class="top-decks">
+        <h2>Top Deck Games</h2>
+        <heartstone-top-decks />
+      </div>
       <heartstone-games-today />
     </div>
   </div>
@@ -13,9 +17,10 @@
 <script>
 import HeartstoneGamesToday from "../components/heartstone/heartstone-games-today";
 import HeartstoneCardsType from "../components/heartstone/heartstone-cards-type";
+import HeartstoneTopDecks from "../components/heartstone/heartstone-top-decks";
 export default {
   name: "heartstone",
-  components: { HeartstoneCardsType, HeartstoneGamesToday },
+  components: { HeartstoneTopDecks, HeartstoneCardsType, HeartstoneGamesToday },
 };
 </script>
 
@@ -32,5 +37,22 @@ export default {
     padding: 3% 3% 0 3%;
     margin-top: 20%;
   }
+}
+
+.cards-type,
+.top-decks {
+  width: 100%;
+  background-color: $heartstone-card-bg;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}
+
+.top-content {
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 </style>

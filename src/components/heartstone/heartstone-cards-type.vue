@@ -35,7 +35,7 @@ export default {
         },
       },
       stroke: {
-        width: 4,
+        width: 2,
       },
       dataLabels: {
         enabled: true,
@@ -63,6 +63,14 @@ export default {
       ],
     },
   }),
+  created() {
+    this.$socket.client.on("cardsType", (cardsType) => {
+      this.series = cardsType;
+    });
+  },
+  beforeDestroy() {
+    this.$socket.client.off("cardsType");
+  },
 };
 </script>
 
