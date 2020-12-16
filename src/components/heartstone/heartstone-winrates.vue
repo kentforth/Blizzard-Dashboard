@@ -128,7 +128,6 @@ export default {
   display: grid;
   grid-template-columns: 100px 1fr 100px;
   align-items: center;
-  max-width: 500px;
 
   h3 {
     font-weight: 800;

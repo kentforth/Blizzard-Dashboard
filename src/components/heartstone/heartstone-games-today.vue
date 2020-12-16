@@ -41,6 +41,7 @@ h2 {
   color: #6b430c;
   font-weight: 700;
   z-index: 999;
+  text-align: left;
   font-size: $font-size * 1.2;
 }
 

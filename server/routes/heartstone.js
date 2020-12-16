@@ -14,6 +14,7 @@ module.exports = function (io) {
       clearInterval(cardsTypeInterval);
       clearInterval(topDeckGamesInterval);
       clearInterval(classWinrate);
+      clearInterval(cardsPlayed);
     });
 
     const totalGamesInterval = setInterval(() => {
@@ -67,6 +68,27 @@ module.exports = function (io) {
 
       socket.emit("heartstoneWinRates", classWinrateArray);
     }, 1000);
+
+    const cardsPlayed = setInterval(() => {
+      let cards = [
+        { min: 182, max: 202 },
+        { min: 283, max: 203 },
+        { min: 192, max: 212 },
+        { min: 241, max: 261 },
+        { min: 195, max: 215 },
+        { min: 136, max: 156 },
+        { min: 185, max: 205 },
+        { min: 253, max: 273 },
+        { min: 215, max: 235 },
+        { min: 243, max: 263 },
+        { min: 173, max: 193 },
+        { min: 216, max: 236 },
+      ];
+
+      let cardsPlayedArray = functions.generateNumbersArray(cards, 1);
+
+      socket.emit("heartStoneCardsPlayed", cardsPlayedArray);
+    }, 2400);
   });
   return router;
 };

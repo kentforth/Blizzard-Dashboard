@@ -21,6 +21,10 @@
         </div>
         <heartstone-winrates />
       </div>
+
+      <div class="played-cards">
+        <heartstone-cards-played />
+      </div>
     </div>
   </div>
 </template>
@@ -30,9 +34,11 @@ import HeartstoneGamesToday from "../components/heartstone/heartstone-games-toda
 import HeartstoneCardsType from "../components/heartstone/heartstone-cards-type";
 import HeartstoneTopDecks from "../components/heartstone/heartstone-top-decks";
 import HeartstoneWinrates from "../components/heartstone/heartstone-winrates";
+import HeartstoneCardsPlayed from "../components/heartstone/heartstone-cards-played";
 export default {
   name: "heartstone",
   components: {
+    HeartstoneCardsPlayed,
     HeartstoneWinrates,
     HeartstoneTopDecks,
     HeartstoneCardsType,
@@ -74,12 +80,15 @@ export default {
 }
 
 .middle-content {
-  margin-top: 1em;
+  margin-top: 2em;
+  display: grid;
+  grid-gap: 1.7em;
+  grid-template-columns: 1fr 1fr;
 }
 
 .winrates {
   background-color: $heartstone-card-bg;
   border-radius: 5px;
-  padding: 1%;
+  padding: 3%;
 }
 </style>
