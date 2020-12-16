@@ -13,6 +13,7 @@ module.exports = function (io) {
       clearInterval(totalGamesInterval);
       clearInterval(cardsTypeInterval);
       clearInterval(topDeckGamesInterval);
+      clearInterval(classWinrate);
     });
 
     const totalGamesInterval = setInterval(() => {
@@ -47,6 +48,25 @@ module.exports = function (io) {
 
       socket.emit("heartstoneTopDeckGames", newtopDeckGamesArray);
     }, 3400);
+
+    const classWinrate = setInterval(() => {
+      let winrate = [
+        { min: 40, max: 44.3 },
+        { min: 43, max: 48 },
+        { min: 43, max: 47 },
+        { min: 48, max: 56 },
+        { min: 39, max: 43 },
+        { min: 38, max: 45 },
+        { min: 48, max: 56 },
+        { min: 45, max: 52 },
+        { min: 41, max: 56 },
+        { min: 40, max: 45 },
+      ];
+
+      let classWinrateArray = functions.generateFloatNumbersArray(winrate, 1);
+
+      socket.emit("heartstoneWinRates", classWinrateArray);
+    }, 1000);
   });
   return router;
 };

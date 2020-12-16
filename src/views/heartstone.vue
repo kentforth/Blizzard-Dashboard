@@ -1,5 +1,6 @@
 <template>
   <div class="heartstone">
+    <!--TOP CONTENT-->
     <div class="top-content">
       <div class="cards-type">
         <h2>Cards Type</h2>
@@ -11,6 +12,16 @@
       </div>
       <heartstone-games-today />
     </div>
+
+    <!--MIDDLE CONTENT-->
+    <div class="middle-content">
+      <div class="winrates">
+        <div class="winrate-header">
+          <h2>Class Winrates</h2>
+        </div>
+        <heartstone-winrates />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -18,9 +29,15 @@
 import HeartstoneGamesToday from "../components/heartstone/heartstone-games-today";
 import HeartstoneCardsType from "../components/heartstone/heartstone-cards-type";
 import HeartstoneTopDecks from "../components/heartstone/heartstone-top-decks";
+import HeartstoneWinrates from "../components/heartstone/heartstone-winrates";
 export default {
   name: "heartstone",
-  components: { HeartstoneTopDecks, HeartstoneCardsType, HeartstoneGamesToday },
+  components: {
+    HeartstoneWinrates,
+    HeartstoneTopDecks,
+    HeartstoneCardsType,
+    HeartstoneGamesToday,
+  },
 };
 </script>
 
@@ -54,5 +71,15 @@ export default {
   display: grid;
   grid-gap: 2em;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.middle-content {
+  margin-top: 1em;
+}
+
+.winrates {
+  background-color: $heartstone-card-bg;
+  border-radius: 5px;
+  padding: 1%;
 }
 </style>
