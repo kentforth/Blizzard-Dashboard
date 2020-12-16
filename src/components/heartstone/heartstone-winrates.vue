@@ -134,8 +134,11 @@ export default {
     font-weight: 800;
     font-size: $font-size * 2;
     margin: 0;
+    padding: 0.2em 0 0 0;
     background-color: rgba(18, 18, 18, 0.6);
     text-align: center;
+    height: 100%;
+    text-shadow: 3px 2px black;
   }
 
   h4 {
@@ -143,6 +146,7 @@ export default {
     font-size: $font-size * 1.7;
     color: $white;
     margin: 0.3em 3%;
+    text-shadow: 2px 2px black;
   }
 }
 
