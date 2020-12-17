@@ -54,6 +54,27 @@ export default {
           shadeIntensity: 0.6,
         },
       },
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 350,
+            },
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+        {
+          breakpoint: 370,
+          options: {
+            chart: {
+              width: 300,
+            },
+          },
+        },
+      ],
     },
   }),
   created() {

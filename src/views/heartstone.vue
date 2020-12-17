@@ -10,7 +10,7 @@
         <h2>Top Deck Games</h2>
         <heartstone-top-decks />
       </div>
-      <heartstone-games-today />
+      <heartstone-games-today class="games-today" />
     </div>
 
     <!--MIDDLE CONTENT-->
@@ -54,10 +54,11 @@ export default {
   background-size: cover;
   min-height: 100vh;
   width: 100%;
-  padding: 3% 2% 0 $nav-width + 2.2%;
+  padding: 3% 2% 2% $nav-width + 2.2%;
+  overflow-x: hidden;
 
   @include responsive(phone) {
-    padding: 3% 3% 0 3%;
+    padding: 3% 5% 5% 5%;
     margin-top: 20%;
   }
 }
@@ -77,6 +78,34 @@ export default {
   display: grid;
   grid-gap: 2em;
   grid-template-columns: 1fr 1fr 1fr;
+
+  @include responsive(tab-port) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.games-today {
+  @include responsive(tab-port) {
+    order: 1;
+  }
+}
+
+.cards-type {
+  @include responsive(tab-port) {
+    order: 2;
+    margin-top: 25%;
+  }
+
+  @include responsive(phone) {
+    order: 2;
+    margin-top: 50%;
+  }
+}
+
+.top-decks {
+  @include responsive(tab-port) {
+    order: 3;
+  }
 }
 
 .middle-content {
@@ -84,6 +113,10 @@ export default {
   display: grid;
   grid-gap: 1.7em;
   grid-template-columns: 1fr 1fr;
+
+  @include responsive(tab-port) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .winrates {

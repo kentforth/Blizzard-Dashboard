@@ -25,11 +25,6 @@ export default {
         foreColor: "#f4e2e2",
         height: 350,
         type: "bar",
-        events: {
-          click: function (chart) {
-            console.log(chart);
-          },
-        },
       },
       colors: [
         "#FF5A68",
@@ -57,6 +52,19 @@ export default {
       tooltip: {
         theme: "dark",
       },
+      responsive: [
+        {
+          breakpoint: 770,
+          options: {
+            chart: {
+              height: 450,
+            },
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      ],
       xaxis: {
         categories: [
           "Wand Thief",

@@ -43,6 +43,21 @@ h2 {
   z-index: 999;
   text-align: left;
   font-size: $font-size * 1.2;
+
+  @include responsive(tab-land) {
+    top: 110px;
+    right: 17%;
+  }
+
+  @include responsive(tab-port) {
+    right: 35%;
+  }
+
+  @include responsive(phone) {
+    top: 130px;
+    right: 26%;
+    font-size: $font-size * 1.4;
+  }
 }
 
 img {
@@ -54,5 +69,19 @@ img {
   height: 200px;
   object-fit: contain;
   object-position: right;
+
+  @include responsive(tab-land) {
+    width: 500px;
+    height: 150px;
+  }
+
+  @include responsive(tab-port) {
+    right: 27%;
+  }
+
+  @include responsive(phone) {
+    right: 10%;
+    top: 20px;
+  }
 }
 </style>
