@@ -70,7 +70,7 @@ export default {
           breakpoint: 370,
           options: {
             chart: {
-              width: 300,
+              width: 270,
             },
           },
         },
