@@ -10,3 +10,4 @@ app.use(require("./routes/overwatch")(io));
 app.use(require("./routes/starcraft")(io));
 app.use(require("./routes/diablo")(io));
 app.use(require("./routes/heartstone")(io));
+app.use(require("./routes/wow")(io));

@@ -28,6 +28,11 @@ const routes = [
     name: "heartstone",
     component: () => import("../views/heartstone"),
   },
+  {
+    path: "/wow",
+    name: "wow",
+    component: () => import("../views/wow"),
+  },
 ];
 
 const router = new VueRouter({
