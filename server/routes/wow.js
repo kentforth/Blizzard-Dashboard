@@ -89,12 +89,36 @@ module.exports = function (io) {
     { min: 6.8, max: 69.6 },
   ];
 
+  let battlegroundsWon = [
+    { min: 1, max: 5 },
+    { min: 1, max: 4 },
+    { min: 2, max: 7 },
+    { min: 3, max: 8 },
+    { min: 1, max: 6 },
+    { min: 2, max: 5 },
+    { min: 3, max: 6 },
+    { min: 1, max: 6 },
+    { min: 2, max: 4 },
+    { min: 1, max: 7 },
+    { min: 2, max: 8 },
+    { min: 71, max: 92 },
+    { min: 3, max: 5 },
+    { min: 1, max: 5 },
+    { min: 5, max: 8 },
+    { min: 2, max: 9 },
+    { min: 4, max: 3 },
+    { min: 6, max: 10 },
+    { min: 5, max: 7 },
+    { min: 2, max: 6 },
+  ];
+
   wowIO.on("connection", (socket) => {
     socket.on("disconnect", () => {
       clearInterval(characterDistributionInterval);
       clearInterval(topPlayersRatingInterval);
       clearInterval(racesInterval);
       clearInterval(playerMountsInterval);
+      clearInterval(battlegroundsInterval);
     });
 
     const characterDistributionInterval = setInterval(() => {
@@ -127,6 +151,15 @@ module.exports = function (io) {
 
       socket.emit("wowPlayersMounts", mountsArray);
     }, 1780);
+
+    const battlegroundsInterval = setInterval(() => {
+      let battlegroundsWonsArray = functions.generateNumbersArray(
+        battlegroundsWon,
+        1
+      );
+
+      socket.emit("wowBattlegroundsRating", battlegroundsWonsArray);
+    }, 2600);
   });
   return router;
 };

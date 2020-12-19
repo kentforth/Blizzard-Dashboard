@@ -53,7 +53,7 @@ export default {
     isTooltip: false,
     tooltipStyle: {
       top: 0,
-      left: "6%",
+      left: "10%",
     },
     tooltipTitle: "Default Title",
     tooltipDescription: "Default Description",

@@ -35,9 +35,16 @@
       <wow-races />
     </div>
 
-    <!--MOUNTS-->
-    <div class="mounts">
-      <wow-mounts />
+    <div class="footer">
+      <!--MOUNTS-->
+      <div class="mounts">
+        <wow-mounts />
+      </div>
+
+      <!--BATTLEGROUNDS WON-->
+      <div class="battlegrounds">
+        <wow-battlegrounds />
+      </div>
     </div>
   </div>
 </template>
@@ -47,9 +54,11 @@ import WowCharacterDistribution from "../components/wow/wow-character-distributi
 import WowPlayersRating from "../components/wow/wow-players-rating";
 import WowRaces from "../components/wow/wow-races";
 import WowMounts from "../components/wow/wow-mounts";
+import WowBattlegrounds from "../components/wow/wow-battlegrounds";
 export default {
   name: "wow",
   components: {
+    WowBattlegrounds,
     WowMounts,
     WowRaces,
     WowPlayersRating,
@@ -158,5 +167,11 @@ export default {
     font-weight: 700;
     color: #e37434;
   }
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em;
 }
 </style>
