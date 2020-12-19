@@ -51,10 +51,50 @@ module.exports = function (io) {
     { min: 1965, max: 2500 },
   ];
 
+  let allianceRaces = [
+    { min: 10, max: 15 },
+    { min: 17, max: 26 },
+    { min: 5, max: 17 },
+    { min: 65, max: 82 },
+    { min: 38, max: 48 },
+    { min: 26, max: 31 },
+    { min: 52, max: 72 },
+  ];
+
+  let hordeRaces = [
+    { min: 10, max: 15 },
+    { min: 17, max: 26 },
+    { min: 5, max: 17 },
+    { min: 65, max: 82 },
+    { min: 38, max: 48 },
+    { min: 26, max: 31 },
+    { min: 52, max: 72 },
+  ];
+
+  let playersMounts = [
+    { min: 80, max: 82.8 },
+    { min: 72, max: 74 },
+    { min: 60, max: 61.4 },
+    { min: 65.5, max: 66 },
+    { min: 59, max: 61.5 },
+    { min: 74, max: 75.2 },
+    { min: 67, max: 68.2 },
+    { min: 72, max: 73.4 },
+    { min: 79, max: 80.3 },
+    { min: 57, max: 57.6 },
+    { min: 64.5, max: 65 },
+    { min: 74.7, max: 75.2 },
+    { min: 60.4, max: 61 },
+    { min: 52, max: 58 },
+    { min: 6.8, max: 69.6 },
+  ];
+
   wowIO.on("connection", (socket) => {
     socket.on("disconnect", () => {
       clearInterval(characterDistributionInterval);
       clearInterval(topPlayersRatingInterval);
+      clearInterval(racesInterval);
+      clearInterval(playerMountsInterval);
     });
 
     const characterDistributionInterval = setInterval(() => {
@@ -70,6 +110,23 @@ module.exports = function (io) {
       let ueRealmArray = functions.generateNumbersArray(playersRatings, 1);
       socket.emit("wowTopPlayersRating", ueRealmArray);
     }, 2300);
+
+    const racesInterval = setInterval(() => {
+      let allianceArray = functions.generateNumbersArray(allianceRaces, 1);
+      let hordeArray = functions.generateNumbersArray(hordeRaces, 1);
+
+      let newAllianceArray = functions.calculatePercentage(allianceArray);
+      let newHordeArray = functions.calculatePercentage(hordeArray);
+
+      let racesArray = [newAllianceArray, newHordeArray];
+      socket.emit("wowPlayersRaces", racesArray);
+    }, 2730);
+
+    const playerMountsInterval = setInterval(() => {
+      let mountsArray = functions.generateFloatNumbersArray(playersMounts, 1);
+
+      socket.emit("wowPlayersMounts", mountsArray);
+    }, 1780);
   });
   return router;
 };

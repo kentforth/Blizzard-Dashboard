@@ -29,15 +29,32 @@
         <wow-players-rating />
       </div>
     </div>
+
+    <!--RACES-->
+    <div class="races">
+      <wow-races />
+    </div>
+
+    <!--MOUNTS-->
+    <div class="mounts">
+      <wow-mounts />
+    </div>
   </div>
 </template>
 
 <script>
 import WowCharacterDistribution from "../components/wow/wow-character-distribution";
 import WowPlayersRating from "../components/wow/wow-players-rating";
+import WowRaces from "../components/wow/wow-races";
+import WowMounts from "../components/wow/wow-mounts";
 export default {
   name: "wow",
-  components: { WowPlayersRating, WowCharacterDistribution },
+  components: {
+    WowMounts,
+    WowRaces,
+    WowPlayersRating,
+    WowCharacterDistribution,
+  },
   data: () => ({
     playerRatings: [
       {
@@ -102,7 +119,7 @@ export default {
   min-height: 100vh;
   width: 100%;
   padding: 3% 2% 2% $nav-width + 2.2%;
-  overflow-x: hidden;
+  overflow: hidden;
 
   @include responsive(phone) {
     padding: 3% 5% 5% 5%;

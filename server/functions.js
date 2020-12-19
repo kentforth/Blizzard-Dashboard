@@ -11,7 +11,7 @@ exports.generateRandomUsers = function (min, max) {
   return item;
 };
 
-//generate array with custom length and num,bers from min to max
+//generate array with custom length and numbers from min to max
 exports.generateRandomArray = function (min, max, arrayLength) {
   let randoms = Array.from({ length: arrayLength }, () =>
     Math.floor(Math.random() * (max - min + 1) + min)
@@ -96,4 +96,16 @@ exports.generateNumbersArray = function (numberArray, fractionDigit) {
     newArray.push(number);
   }
   return newArray;
+};
+
+exports.calculatePercentage = function (array) {
+  let newArray = [];
+  let sum = array.reduce((a, b) => a + b, 0);
+  let percent = null;
+  array.forEach((element) => {
+    percent = (element * 100) / sum;
+    newArray.push(percent.toFixed(1));
+  });
+
+  return newArray.map(Number);
 };
