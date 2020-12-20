@@ -2,30 +2,40 @@
   <div class="heartstone">
     <!--TOP CONTENT-->
     <div class="top-content">
-      <div class="cards-type">
-        <h2>Cards Type</h2>
-        <heartstone-cards-type />
-      </div>
-      <div class="top-decks">
-        <h2>Top Deck Games</h2>
-        <heartstone-top-decks />
-      </div>
-      <heartstone-games-today class="games-today" />
+      <slide-left-animation>
+        <div class="cards-type">
+          <h2>Cards Type</h2>
+          <heartstone-cards-type />
+        </div>
+      </slide-left-animation>
+
+      <slide-right-animation>
+        <div class="top-decks">
+          <h2>Top Deck Games</h2>
+          <heartstone-top-decks />
+        </div>
+      </slide-right-animation>
+
+      <slide-up-animation>
+        <heartstone-games-today class="games-today" />
+      </slide-up-animation>
     </div>
 
     <!--MIDDLE CONTENT-->
-    <div class="middle-content">
-      <div class="winrates">
-        <div class="winrate-header">
-          <h2>Class Winrates</h2>
+    <slide-up-animation>
+      <div class="middle-content">
+        <div class="winrates">
+          <div class="winrate-header">
+            <h2>Class Winrates</h2>
+          </div>
+          <heartstone-winrates />
         </div>
-        <heartstone-winrates />
-      </div>
 
-      <div class="played-cards">
-        <heartstone-cards-played />
+        <div class="played-cards">
+          <heartstone-cards-played />
+        </div>
       </div>
-    </div>
+    </slide-up-animation>
   </div>
 </template>
 
@@ -35,9 +45,15 @@ import HeartstoneCardsType from "../components/heartstone/heartstone-cards-type"
 import HeartstoneTopDecks from "../components/heartstone/heartstone-top-decks";
 import HeartstoneWinrates from "../components/heartstone/heartstone-winrates";
 import HeartstoneCardsPlayed from "../components/heartstone/heartstone-cards-played";
+import SlideLeftAnimation from "../components/animations/slide-left-animation";
+import SlideRightAnimation from "../components/animations/slide-right-animation";
+import SlideUpAnimation from "../components/animations/slide-up-animation";
 export default {
   name: "heartstone",
   components: {
+    SlideUpAnimation,
+    SlideRightAnimation,
+    SlideLeftAnimation,
     HeartstoneCardsPlayed,
     HeartstoneWinrates,
     HeartstoneTopDecks,

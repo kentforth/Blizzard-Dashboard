@@ -2,38 +2,44 @@
   <div class="wow">
     <!--TOP CONTENT-->
     <div class="top-content">
-      <div class="character-distribution">
-        <h2>
-          Distribution of World of Warcraft characters in U.S. and EU realms by
-          class
-        </h2>
-        <hr class="line" />
-        <wow-character-distribution />
-      </div>
-
-      <div class="top-players-rating">
-        <h2>Top Player Ratings</h2>
-
-        <div class="top-players">
-          <div
-            class="rating-names"
-            v-for="player in playerRatings"
-            :key="player.name"
-          >
-            <p>{{ player.name }}</p>
-            <hr class="line" />
-            <p>{{ player.class }}</p>
-            <img :src="player.img" alt="" />
-          </div>
+      <slide-left-animation>
+        <div class="character-distribution">
+          <h2>
+            Distribution of World of Warcraft characters in U.S. and EU realms
+            by class
+          </h2>
+          <hr class="line" />
+          <wow-character-distribution />
         </div>
-        <wow-players-rating />
-      </div>
+      </slide-left-animation>
+
+      <slide-right-animation>
+        <div class="top-players-rating">
+          <h2>Top Player Ratings</h2>
+
+          <div class="top-players">
+            <div
+              class="rating-names"
+              v-for="player in playerRatings"
+              :key="player.name"
+            >
+              <p>{{ player.name }}</p>
+              <hr class="line" />
+              <p>{{ player.class }}</p>
+              <img :src="player.img" alt="" />
+            </div>
+          </div>
+          <wow-players-rating />
+        </div>
+      </slide-right-animation>
     </div>
 
     <!--RACES-->
-    <div class="races">
-      <wow-races />
-    </div>
+    <slide-up-animation>
+      <div class="races">
+        <wow-races />
+      </div>
+    </slide-up-animation>
 
     <div class="footer">
       <!--MOUNTS-->
@@ -55,9 +61,15 @@ import WowPlayersRating from "../components/wow/wow-players-rating";
 import WowRaces from "../components/wow/wow-races";
 import WowMounts from "../components/wow/wow-mounts";
 import WowBattlegrounds from "../components/wow/wow-battlegrounds";
+import SlideLeftAnimation from "../components/animations/slide-left-animation";
+import SlideRightAnimation from "../components/animations/slide-right-animation";
+import SlideUpAnimation from "../components/animations/slide-up-animation";
 export default {
   name: "wow",
   components: {
+    SlideUpAnimation,
+    SlideRightAnimation,
+    SlideLeftAnimation,
     WowBattlegrounds,
     WowMounts,
     WowRaces,

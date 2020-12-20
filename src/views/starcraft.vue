@@ -2,72 +2,76 @@
   <div class="starcraft">
     <div class="container">
       <!--TOP CHART-->
-      <users />
+      <slide-down-animation>
+        <users />
+      </slide-down-animation>
 
       <!--Calculate-->
-      <div class="calculate">
-        <div class="calculate__text">
-          <text-centered :text="armyUnitsText" :image="cardFrontImage" />
-        </div>
+      <slide-up-animation>
+        <div class="calculate">
+          <div class="calculate__text">
+            <text-centered :text="armyUnitsText" :image="cardFrontImage" />
+          </div>
 
-        <!--CARDS-->
-        <div class="calculate__images">
-          <card
-            :unit-icon1="unitIcons[0]"
-            :unit-icon2="unitIcons[1]"
-            :unit-icon3="unitIcons[2]"
-            :unit-title1="unitTitles[0]"
-            :unit-title2="unitTitles[1]"
-            :unit-title3="unitTitles[2]"
-          >
-            <img src="../assets/images/starcraft/terran.webp" alt="terran" />
-          </card>
-          <card
-            :unit-icon1="unitIcons[3]"
-            :unit-icon2="unitIcons[4]"
-            :unit-icon3="unitIcons[5]"
-            :unit-title1="unitTitles[3]"
-            :unit-title2="unitTitles[4]"
-            :unit-title3="unitTitles[5]"
-          >
-            <img src="../assets/images/starcraft/zerg.webp" alt="zerg" />
-          </card>
-          <card
-            :unit-icon1="unitIcons[6]"
-            :unit-icon2="unitIcons[7]"
-            :unit-icon3="unitIcons[8]"
-            :unit-title1="unitTitles[6]"
-            :unit-title2="unitTitles[7]"
-            :unit-title3="unitTitles[8]"
-          >
-            <img src="../assets/images/starcraft/protos.webp" alt="protos" />
-          </card>
-        </div>
+          <!--CARDS-->
+          <div class="calculate__images">
+            <card
+              :unit-icon1="unitIcons[0]"
+              :unit-icon2="unitIcons[1]"
+              :unit-icon3="unitIcons[2]"
+              :unit-title1="unitTitles[0]"
+              :unit-title2="unitTitles[1]"
+              :unit-title3="unitTitles[2]"
+            >
+              <img src="../assets/images/starcraft/terran.webp" alt="terran" />
+            </card>
+            <card
+              :unit-icon1="unitIcons[3]"
+              :unit-icon2="unitIcons[4]"
+              :unit-icon3="unitIcons[5]"
+              :unit-title1="unitTitles[3]"
+              :unit-title2="unitTitles[4]"
+              :unit-title3="unitTitles[5]"
+            >
+              <img src="../assets/images/starcraft/zerg.webp" alt="zerg" />
+            </card>
+            <card
+              :unit-icon1="unitIcons[6]"
+              :unit-icon2="unitIcons[7]"
+              :unit-icon3="unitIcons[8]"
+              :unit-title1="unitTitles[6]"
+              :unit-title2="unitTitles[7]"
+              :unit-title3="unitTitles[8]"
+            >
+              <img src="../assets/images/starcraft/protos.webp" alt="protos" />
+            </card>
+          </div>
 
-        <div class="race">
-          <h2>Terran</h2>
-          <h2>Zerg</h2>
-          <h2>Protoss</h2>
-        </div>
+          <div class="race">
+            <h2>Terran</h2>
+            <h2>Zerg</h2>
+            <h2>Protoss</h2>
+          </div>
 
-        <div class="race-inputs">
-          <input type="number" class="input" v-model="terranNumber" />
-          <input type="number" class="input" v-model="zergNumber" />
-          <input type="number" class="input" v-model="protossNumber" />
-        </div>
+          <div class="race-inputs">
+            <input type="number" class="input" v-model="terranNumber" />
+            <input type="number" class="input" v-model="zergNumber" />
+            <input type="number" class="input" v-model="protossNumber" />
+          </div>
 
-        <div class="buttons">
-          <button class="btn-calc" @click="createChart">CREATE CHART</button>
-        </div>
+          <div class="buttons">
+            <button class="btn-calc" @click="createChart">CREATE CHART</button>
+          </div>
 
-        <div class="units-pie">
-          <units-pie ref="armyUnitsChart" />
-        </div>
+          <div class="units-pie">
+            <units-pie ref="armyUnitsChart" />
+          </div>
 
-        <div class="clan-members">
-          <clan-members />
+          <div class="clan-members">
+            <clan-members />
+          </div>
         </div>
-      </div>
+      </slide-up-animation>
     </div>
   </div>
 </template>
@@ -86,10 +90,20 @@ import UnitsPie from "../components/starcraft/units-pie";
 Vue.use(Toast);
 
 import ClanMembers from "../components/starcraft/clan-members";
+import SlideDownAnimation from "../components/animations/slide-down-animation";
+import SlideUpAnimation from "../components/animations/slide-up-animation";
 
 export default {
   name: "starcraft",
-  components: { ClanMembers, UnitsPie, Card, TextCentered, Users },
+  components: {
+    SlideUpAnimation,
+    SlideDownAnimation,
+    ClanMembers,
+    UnitsPie,
+    Card,
+    TextCentered,
+    Users,
+  },
   data: () => ({
     terranNumber: "",
     zergNumber: "",

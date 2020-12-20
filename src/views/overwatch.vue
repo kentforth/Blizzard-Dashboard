@@ -2,37 +2,41 @@
   <div class="overwatch">
     <div class="container">
       <!--TOP CHARTS-->
-      <section class="top-content">
-        <div class="users">
-          <div class="users__chart">
-            <div class="users-text">
-              <h2>Users</h2>
+      <slide-down-animation>
+        <section class="top-content">
+          <div class="users">
+            <div class="users__chart">
+              <div class="users-text">
+                <h2>Users</h2>
+                <img
+                  src="../assets/images/icons/users.svg"
+                  alt="users"
+                  class="svg-icon"
+                />
+              </div>
+              <users-area />
+            </div>
+          </div>
+          <div class="clans__chart">
+            <div class="clans__text">
+              <h2>Teams Winrate</h2>
               <img
-                src="../assets/images/icons/users.svg"
+                src="../assets/images/icons/clans.svg"
                 alt="users"
                 class="svg-icon"
               />
             </div>
-            <users-area />
+            <teams-winrate />
           </div>
-        </div>
-        <div class="clans__chart">
-          <div class="clans__text">
-            <h2>Teams Winrate</h2>
-            <img
-              src="../assets/images/icons/clans.svg"
-              alt="users"
-              class="svg-icon"
-            />
-          </div>
-          <teams-winrate />
-        </div>
-      </section>
+        </section>
+      </slide-down-animation>
 
       <!--MIDDLE CHARTS-->
-      <section class="middle-content">
-        <users-choice />
-      </section>
+      <slide-up-animation>
+        <section class="middle-content">
+          <users-choice />
+        </section>
+      </slide-up-animation>
     </div>
   </div>
 </template>
@@ -41,11 +45,24 @@
 import UsersArea from "../components/overwatch/users-area";
 import TeamsWinrate from "../components/overwatch/teams-winrate";
 import UsersChoice from "../components/overwatch/users-choice";
+import SlideDownAnimation from "../components/animations/slide-down-animation";
+import SlideUpAnimation from "../components/animations/slide-up-animation";
 
 export default {
   name: "overwatch",
-  components: { UsersChoice, TeamsWinrate, UsersArea },
-  data: () => ({}),
+  components: {
+    SlideUpAnimation,
+    SlideDownAnimation,
+    UsersChoice,
+    TeamsWinrate,
+    UsersArea,
+  },
+  data: () => ({
+    isOverwatchShow: false,
+  }),
+  mounted() {
+    this.isOverwatchShow = true;
+  },
 };
 </script>
 

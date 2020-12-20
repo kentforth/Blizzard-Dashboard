@@ -2,174 +2,187 @@
   <div class="diablo">
     <div class="top-content">
       <!--TOp COUNTRIES-->
-      <div class="top-chart-items">
-        <div class="top-chart-items__header">
-          <h2>Top Countries Playing Diablo 3</h2>
-          <img src="../assets/images/icons/flag.svg" alt="" class="svg-icon" />
+      <slide-left-animation>
+        <div class="top-chart-items">
+          <div class="top-chart-items__header">
+            <h2>Top Countries Playing Diablo 3</h2>
+            <img
+              src="../assets/images/icons/flag.svg"
+              alt=""
+              class="svg-icon"
+            />
+          </div>
+          <div class="countries-chart">
+            <top-countries />
+          </div>
         </div>
-        <div class="countries-chart">
-          <top-countries />
-        </div>
-      </div>
+      </slide-left-animation>
 
       <!--TOP DAMAGE CHARACTERS-->
-      <div class="top-chart-items">
-        <div class="top-chart-items__header">
-          <h2>Top Damage Players</h2>
-          <img
-            src="../assets/images/overwatch/damage.svg"
-            alt=""
-            class="svg-icon"
-          />
+      <slide-right-animation>
+        <div class="top-chart-items">
+          <div class="top-chart-items__header">
+            <h2>Top Damage Players</h2>
+            <img
+              src="../assets/images/overwatch/damage.svg"
+              alt=""
+              class="svg-icon"
+            />
+          </div>
+          <div class="countries-chart">
+            <top-damage />
+          </div>
         </div>
-        <div class="countries-chart">
-          <top-damage />
-        </div>
-      </div>
+      </slide-right-animation>
     </div>
 
     <!--CHARACTER STATS-->
-    <div class="character-stats">
-      <div class="top-chart-items__header">
-        <h2>Character Stats</h2>
-        <img src="../assets/images/icons/stats.svg" alt="" class="svg-icon" />
+    <slide-up-animation>
+      <div class="character-stats">
+        <div class="top-chart-items__header">
+          <h2>Character Stats</h2>
+          <img src="../assets/images/icons/stats.svg" alt="" class="svg-icon" />
+        </div>
+        <div class="character">
+          <!--BARBARIAN-->
+          <character
+            @click="generateCharacterChart('barbarian')"
+            :strength="barbarianStats[0]"
+            :dexterity="barbarianStats[1]"
+            :intelligence="barbarianStats[2]"
+            :vitality="barbarianStats[3]"
+            ref="barbarian"
+          >
+            <template v-slot:characterName>
+              <h3>Barbarian</h3>
+            </template>
+            <template v-slot:image>
+              <img
+                src="../assets/images/diablo/barbarian.png"
+                alt="barbarian"
+              />
+            </template>
+
+            <template v-slot:diablo-attributes-chart>
+              <diablo-attributes-chart
+                :series="barbarianSeries"
+                :options="barbarianOptions"
+              />
+            </template>
+          </character>
+
+          <hr class="line" />
+
+          <!--DEMON HUNTER-->
+          <character
+            @click="generateCharacterChart('demonHunter')"
+            :strength="demonHunterStats[0]"
+            :dexterity="demonHunterStats[1]"
+            :intelligence="demonHunterStats[2]"
+            :vitality="demonHunterStats[3]"
+            ref="demonHunter"
+          >
+            <template v-slot:characterName>
+              <h3>Demon Hunter</h3>
+            </template>
+            <template v-slot:image>
+              <img
+                src="../assets/images/diablo/demon-hunter.png"
+                alt="demon-hunter"
+              />
+            </template>
+
+            <template v-slot:diablo-attributes-chart>
+              <diablo-attributes-chart
+                :series="demonHunterSeries"
+                :options="demonHunterOptions"
+              />
+            </template>
+          </character>
+
+          <hr class="line" />
+
+          <!--WITCH DOCTOR-->
+          <character
+            @click="generateCharacterChart('witchDoctor')"
+            :strength="witchDoctorStats[0]"
+            :dexterity="witchDoctorStats[1]"
+            :intelligence="witchDoctorStats[2]"
+            :vitality="witchDoctorStats[3]"
+            ref="witchDoctor"
+          >
+            <template v-slot:characterName>
+              <h3>Witch Doctor</h3>
+            </template>
+            <template v-slot:image>
+              <img
+                src="../assets/images/diablo/witch-doctor.png"
+                alt="witch-doctor"
+              />
+            </template>
+
+            <template v-slot:diablo-attributes-chart>
+              <diablo-attributes-chart
+                :series="witchDoctorSeries"
+                :options="witchDoctorOptions"
+              />
+            </template>
+          </character>
+
+          <hr class="line" />
+
+          <!--MONK-->
+          <character
+            @click="generateCharacterChart('monk')"
+            :strength="monkStats[0]"
+            :dexterity="monkStats[1]"
+            :intelligence="monkStats[2]"
+            :vitality="monkStats[3]"
+            ref="monk"
+          >
+            <template v-slot:characterName>
+              <h3>Monk</h3>
+            </template>
+            <template v-slot:image>
+              <img src="../assets/images/diablo/monk.png" alt="monk" />
+            </template>
+
+            <template v-slot:diablo-attributes-chart>
+              <diablo-attributes-chart
+                :series="monkSeries"
+                :options="monkOptions"
+              />
+            </template>
+          </character>
+
+          <hr class="line" />
+
+          <!--WIZARD-->
+          <character
+            @click="generateCharacterChart('wizard')"
+            :strength="wizardStats[0]"
+            :dexterity="wizardStats[1]"
+            :intelligence="wizardStats[2]"
+            :vitality="wizardStats[3]"
+            ref="wizard"
+          >
+            <template v-slot:characterName>
+              <h3>Wizard</h3>
+            </template>
+            <template v-slot:image>
+              <img src="../assets/images/diablo/wizard.png" alt="wizard" />
+            </template>
+
+            <template v-slot:diablo-attributes-chart>
+              <diablo-attributes-chart
+                :series="wizardSeries"
+                :options="wizardOptions"
+              />
+            </template>
+          </character>
+        </div>
       </div>
-      <div class="character">
-        <!--BARBARIAN-->
-        <character
-          @click="generateCharacterChart('barbarian')"
-          :strength="barbarianStats[0]"
-          :dexterity="barbarianStats[1]"
-          :intelligence="barbarianStats[2]"
-          :vitality="barbarianStats[3]"
-          ref="barbarian"
-        >
-          <template v-slot:characterName>
-            <h3>Barbarian</h3>
-          </template>
-          <template v-slot:image>
-            <img src="../assets/images/diablo/barbarian.png" alt="barbarian" />
-          </template>
-
-          <template v-slot:diablo-attributes-chart>
-            <diablo-attributes-chart
-              :series="barbarianSeries"
-              :options="barbarianOptions"
-            />
-          </template>
-        </character>
-
-        <hr class="line" />
-
-        <!--DEMON HUNTER-->
-        <character
-          @click="generateCharacterChart('demonHunter')"
-          :strength="demonHunterStats[0]"
-          :dexterity="demonHunterStats[1]"
-          :intelligence="demonHunterStats[2]"
-          :vitality="demonHunterStats[3]"
-          ref="demonHunter"
-        >
-          <template v-slot:characterName>
-            <h3>Demon Hunter</h3>
-          </template>
-          <template v-slot:image>
-            <img
-              src="../assets/images/diablo/demon-hunter.png"
-              alt="demon-hunter"
-            />
-          </template>
-
-          <template v-slot:diablo-attributes-chart>
-            <diablo-attributes-chart
-              :series="demonHunterSeries"
-              :options="demonHunterOptions"
-            />
-          </template>
-        </character>
-
-        <hr class="line" />
-
-        <!--WITCH DOCTOR-->
-        <character
-          @click="generateCharacterChart('witchDoctor')"
-          :strength="witchDoctorStats[0]"
-          :dexterity="witchDoctorStats[1]"
-          :intelligence="witchDoctorStats[2]"
-          :vitality="witchDoctorStats[3]"
-          ref="witchDoctor"
-        >
-          <template v-slot:characterName>
-            <h3>Witch Doctor</h3>
-          </template>
-          <template v-slot:image>
-            <img
-              src="../assets/images/diablo/witch-doctor.png"
-              alt="witch-doctor"
-            />
-          </template>
-
-          <template v-slot:diablo-attributes-chart>
-            <diablo-attributes-chart
-              :series="witchDoctorSeries"
-              :options="witchDoctorOptions"
-            />
-          </template>
-        </character>
-
-        <hr class="line" />
-
-        <!--MONK-->
-        <character
-          @click="generateCharacterChart('monk')"
-          :strength="monkStats[0]"
-          :dexterity="monkStats[1]"
-          :intelligence="monkStats[2]"
-          :vitality="monkStats[3]"
-          ref="monk"
-        >
-          <template v-slot:characterName>
-            <h3>Monk</h3>
-          </template>
-          <template v-slot:image>
-            <img src="../assets/images/diablo/monk.png" alt="monk" />
-          </template>
-
-          <template v-slot:diablo-attributes-chart>
-            <diablo-attributes-chart
-              :series="monkSeries"
-              :options="monkOptions"
-            />
-          </template>
-        </character>
-
-        <hr class="line" />
-
-        <!--WIZARD-->
-        <character
-          @click="generateCharacterChart('wizard')"
-          :strength="wizardStats[0]"
-          :dexterity="wizardStats[1]"
-          :intelligence="wizardStats[2]"
-          :vitality="wizardStats[3]"
-          ref="wizard"
-        >
-          <template v-slot:characterName>
-            <h3>Wizard</h3>
-          </template>
-          <template v-slot:image>
-            <img src="../assets/images/diablo/wizard.png" alt="wizard" />
-          </template>
-
-          <template v-slot:diablo-attributes-chart>
-            <diablo-attributes-chart
-              :series="wizardSeries"
-              :options="wizardOptions"
-            />
-          </template>
-        </character>
-      </div>
-    </div>
+    </slide-up-animation>
   </div>
 </template>
 
@@ -178,13 +191,24 @@ import TopCountries from "../components/diablo/top-countries";
 import TopDamage from "../components/diablo/top-damage";
 import Character from "../components/diablo/character";
 import DiabloAttributesChart from "../components/diablo/diablo-attributes-chart";
+import SlideLeftAnimation from "../components/animations/slide-left-animation";
+import SlideRightAnimation from "../components/animations/slide-right-animation";
+import SlideUpAnimation from "../components/animations/slide-up-animation";
 
 let stats = [];
 let character = {};
 
 export default {
   name: "diablo",
-  components: { DiabloAttributesChart, Character, TopDamage, TopCountries },
+  components: {
+    SlideUpAnimation,
+    SlideRightAnimation,
+    SlideLeftAnimation,
+    DiabloAttributesChart,
+    Character,
+    TopDamage,
+    TopCountries,
+  },
   data: () => ({
     barbarianStats: [87, 43, 21, 68],
     demonHunterStats: [68, 103, 36, 72],
