@@ -223,6 +223,14 @@ export default {
   z-index: 999;
   top: 35%;
   left: 40%;
+
+  @include responsive(tab-port) {
+    left: 28%;
+  }
+
+  @include responsive(phone) {
+    left: 10%;
+  }
 }
 
 .modal-overlay {
@@ -288,6 +296,10 @@ export default {
     color: #00bf8d;
     margin-bottom: 0;
     margin-top: 30px;
+
+    @include responsive(tab-port) {
+      font-size: $font-size * 1.5;
+    }
   }
 
   span {

@@ -131,7 +131,7 @@ export default {
   overflow: hidden;
 
   @include responsive(phone) {
-    padding: 3% 5% 5% 5%;
+    padding: 3% 5% 10% 5%;
     margin-top: 20%;
   }
 }
@@ -140,6 +140,10 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2em;
+
+  @include responsive(tab-port) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .line {
@@ -154,9 +158,12 @@ export default {
 }
 
 .top-players {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  @include responsive(phone) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
   p {
     margin: 5px;
@@ -169,9 +176,33 @@ export default {
   }
 }
 
+.rating-names {
+  p {
+    @include responsive(phone) {
+      font-size: $font-size * 1.4;
+    }
+  }
+}
+
 .footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2em;
+
+  @include responsive(tab-port) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mounts {
+  @include responsive(tab-port) {
+    order: 2;
+  }
+}
+
+.battlegrounds {
+  @include responsive(tab-port) {
+    order: 1;
+  }
 }
 </style>

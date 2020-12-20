@@ -32,6 +32,14 @@ export default {
   border-radius: 10px;
   -webkit-box-shadow: 1px 1px 17px 7px rgba(0, 0, 0, 0.58);
   box-shadow: 1px 1px 17px 7px rgba(0, 0, 0, 0.58);
+
+  @include responsive(tab-port) {
+    width: 60%;
+  }
+
+  @include responsive(phone) {
+    width: 80%;
+  }
 }
 
 .header h1 {
@@ -50,10 +58,25 @@ export default {
   width: 50px;
   height: 50px;
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+
+  @include responsive(phone) {
+    width: 25px;
+    height: 25px;
+    top: 2%;
+    right: 2%;
+  }
 }
 
 .line {
   width: 100%;
   border: 1px solid #949c86;
+}
+
+.description {
+  p {
+    @include responsive(tab-port) {
+      font-size: $font-size * 1.6;
+    }
+  }
 }
 </style>

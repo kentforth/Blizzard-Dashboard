@@ -9,7 +9,8 @@
 </template>
 
 <script>
-// let formatNumber = 1;
+let newNumber = 1;
+
 export default {
   name: "heartstone-games-today",
   data: () => ({
@@ -20,6 +21,8 @@ export default {
       this.totalGames = this.totalGames * 1000;
       this.totalGames += totalGames;
       this.totalGames = this.totalGames / 1000;
+      newNumber = this.totalGames.toFixed(3);
+      this.totalGames = newNumber;
     });
   },
   beforeDestroy() {
@@ -36,6 +39,7 @@ export default {
 h2 {
   margin: 0;
   position: absolute;
+  padding: 0 5px;
   top: 145px;
   right: 15%;
   color: #6b430c;

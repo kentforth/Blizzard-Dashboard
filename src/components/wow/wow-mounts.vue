@@ -358,6 +358,10 @@ td:last-child {
 span {
   margin-left: 10px;
   font-size: $font-size * 1.2;
+
+  @include responsive(tab-port) {
+    font-size: $font-size * 1.5;
+  }
 }
 
 .icon {

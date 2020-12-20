@@ -530,10 +530,10 @@ export default {
   background-size: cover;
   min-height: 100vh;
   width: 100%;
-  padding: 3% 2% 0 $nav-width + 2.2%;
+  padding: 3% 2% 2% $nav-width + 2.2%;
 
   @include responsive(phone) {
-    padding: 3% 3% 0 3%;
+    padding: 3%;
     margin-top: 20%;
   }
 }

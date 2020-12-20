@@ -3,6 +3,14 @@ module.exports = {
     port: 11000,
     host: "0.0.0.0",
   },
+  configureWebpack: {
+    optimization: {
+      splitChunks: {
+        minSize: 10000,
+        maxSize: 250000,
+      },
+    },
+  },
   css: {
     loaderOptions: {
       sass: {

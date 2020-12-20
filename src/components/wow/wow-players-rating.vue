@@ -44,6 +44,14 @@ export default {
           colors: ["#fff", "#f2f2f2"],
         },
       },
+      responsive: [
+        {
+          breakpoint: 370,
+          options: {
+            height: 200,
+          },
+        },
+      ],
       xaxis: {
         labels: {
           rotate: -45,
