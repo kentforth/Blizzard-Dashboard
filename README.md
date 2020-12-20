@@ -8,6 +8,6 @@
 * Node js (server)
 * Web Sockets
 
-<span style="color:blue">some *blue* text</span>.
+@@blue text@@
 
 🔗 [View](http://blizzard-stats.ml/)
