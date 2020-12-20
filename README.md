@@ -8,6 +8,5 @@
 * Node js (server)
 * Web Sockets
 
-@@blue text@@
 
 🔗 [View](http://blizzard-stats.ml/)
