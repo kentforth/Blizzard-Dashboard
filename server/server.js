@@ -1,14 +1,26 @@
 const express = require("express");
+const http = require("http");
+const { Server } = require("socket.io");
 const app = express();
-const server = app.listen(11050, function () {
-  console.log("server is running on port 11050");
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: ["*"],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
+  })
+);
+
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: { origin: ["*"], credentials: true },
 });
 
-const io = require("socket.io")(server, {
-  cors: {
-    origin: '*',
-  }
-})
+server.listen(11050, function () {
+  console.log("Server is listening on port 11050");
+});
 
 app.use(require("./routes/overwatch")(io));
 app.use(require("./routes/starcraft")(io));

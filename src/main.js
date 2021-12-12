@@ -18,6 +18,7 @@ Vue.use(
   VueSocketIoExt,
   io("http://localhost:11050", {
     cors: ["*"],
+    transports: ["websocket"],
   })
 );
 
