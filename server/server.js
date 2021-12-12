@@ -5,8 +5,8 @@ const server = app.listen(11050, function () {
 });
 
 const io = require("socket.io")(server, {
-  cors:{
-    origin: "*"
+  cors: {
+    origin: '*',
   }
 })
 

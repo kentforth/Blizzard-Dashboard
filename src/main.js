@@ -11,11 +11,15 @@ import "./assets/scss/global.scss";
 import "@/plugins/apexcharts";
 
 /*SOCKET IO*/
-import VueSocketIOExt from "vue-socket.io-extended";
+import VueSocketIoExt from "vue-socket.io-extended";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:11050");
-Vue.use(VueSocketIOExt, socket);
+Vue.use(
+  VueSocketIoExt,
+  io("http://localhost:11050", {
+    cors: ["*"],
+  })
+);
 
 Vue.config.productionTip = false;
 
