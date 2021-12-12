@@ -66,6 +66,7 @@ export default {
         },
       ],
       xaxis: {
+        max: 10,
         categories: [
           "Wand Thief",
           "Pen Flinger",

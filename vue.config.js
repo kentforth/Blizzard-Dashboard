@@ -1,8 +1,9 @@
 module.exports = {
   devServer: {
     port: 11000,
-    host: "0.0.0.0",
+    host: "localhost",
   },
+  publicPath: "/",
   configureWebpack: {
     optimization: {
       splitChunks: {

@@ -15,8 +15,7 @@
 
       <slide-right-animation>
         <div class="top-players-rating">
-          <h2>Top Player Ratings</h2>
-
+          <h2>Top Players Ratings</h2>
           <div class="top-players">
             <div
               class="rating-names"
